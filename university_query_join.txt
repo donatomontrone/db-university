@@ -68,4 +68,14 @@ ________________________________________________________________________________
 
 Query n7
 
+SELECT `students`.`surname`, `students`.`name`, `students`.`registration_number`, `courses`.`name` AS `course_name`, MAX(`exam_student`.`vote`) AS `max_vote`, COUNT(*) AS `attempts` 
+FROM `students`
+JOIN `exam_student`
+ON `exam_student`.`student_id` = `students`.`id`
+JOIN `exams`
+ON `exams`.`id` = `exam_student`.`exam_id`
+JOIN `courses`
+ON `courses`.`id` = `exams`.`course_id`
+GROUP BY `students`.`name`, `students`.`surname`, `students`.`registration_number`, `courses`.`name`
+HAVING `max_vote` >= 18;
 ___________________________________________________________________________________________
