@@ -16,7 +16,7 @@ Query n1
 
 SELECT COUNT(*) 
 FROM `students` 
-WHERE YEAR(`date_of_birth`) = '1990';
+WHERE YEAR(`date_of_birth`) = 1990;
 ___________________________________________________________________________________________
 
 Query n2
@@ -31,6 +31,8 @@ Query n3
 SELECT * 
 FROM `students` 
 WHERE DATE(`date_of_birth`) <= '1993-02-01' //E' possibile usarlo anche senza DATE()//
+WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30; //correzione
+
 ___________________________________________________________________________________________
 
 Query n4
@@ -46,6 +48,7 @@ Query n5
 SELECT COUNT(*) 
 FROM `exams` 
 WHERE `hour` >= '14:00:00'
+WHERE HOUR(`hour`) >= 14 //correzione
 AND `date` = '2020-06-20';
 ___________________________________________________________________________________________
 
